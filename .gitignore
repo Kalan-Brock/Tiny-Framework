@@ -3,3 +3,4 @@ package-lock.json
 app/vendor/
 node_modules/
 *.lock
+site.zip

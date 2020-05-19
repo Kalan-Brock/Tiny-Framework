@@ -6,6 +6,7 @@ const concat = require('gulp-concat');
 const browsersync = require('browser-sync').create();
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
+const zip = require('gulp-zip');
 const config = require('./config.json');
 
 function browserSync(done) {
@@ -48,6 +49,13 @@ function images() {
         .pipe(gulp.dest('app/img/'));
 }
 
+function package() {
+    return gulp
+        .src(['app/**/*', '!app/vendor/**/*', '!app/cache/*.php', '!app/**/*.lock'], {dot: true})
+        .pipe(zip('site.zip'))
+        .pipe(gulp.dest('./'))
+}
+
 function watchFiles() {
     gulp.watch("assets/scss/**/*", gulp.series(css, reload));
     gulp.watch("assets/js/**/*", scripts);
@@ -59,6 +67,8 @@ const watch = gulp.parallel(browserSync, watchFiles);
 
 exports.css = css;
 exports.scripts = scripts;
+exports.images = images;
 exports.build = build;
 exports.watch = watch;
+exports.package = package;
 exports.default = build;
