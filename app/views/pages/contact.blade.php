@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('page_title', 'Home')
+@section('page_title', 'Contact Us')
 
 @section('content')
 

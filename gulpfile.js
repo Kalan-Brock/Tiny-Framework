@@ -3,6 +3,7 @@ const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
 const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
+const sourcemaps = require('gulp-sourcemaps');
 const browsersync = require('browser-sync').create();
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
@@ -26,11 +27,13 @@ function css() {
     return gulp
         .src("assets/scss/app.scss")
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(concat('app.css'))
         .pipe(autoprefixer('last 2 versions'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest("app/css/"))
-        .pipe(browsersync.stream());
+        .pipe(browsersync.reload({stream:true}));
 }
 
 function scripts() {
