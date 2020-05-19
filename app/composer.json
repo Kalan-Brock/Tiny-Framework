@@ -1,0 +1,13 @@
+{
+    "require": {
+        "jenssegers/blade": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "DxMonkey\\": "tiny/"
+        },
+        "classmap": [
+            "tiny/"
+          ]
+    }
+}

@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  php-apache:
+    image: geerlingguy/php-apache:latest
+    ports:
+      - "80:80"
+    restart: 'no'
+    volumes:
+      - ./app/:/var/www/html:rw,delegated
