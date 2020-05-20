@@ -15,9 +15,14 @@ class Tiny
         $this->method = $_SERVER['REQUEST_METHOD'];
         
         if(isset($_GET['path'])) {
+
             $this->path = $_GET['path'];
-        } else {
+
+        } 
+        else {
+
             $this->path = 'home';
+
         }
 
         $this->blade = new Blade('views', 'cache');
@@ -29,6 +34,7 @@ class Tiny
         if($this->method == 'GET') 
         {
             if(file_exists('./views/pages/'.$this->path.'.blade.php')) {
+
                 $data = [
                     'path' => $this->path
                 ];
@@ -36,8 +42,26 @@ class Tiny
                 echo $this->blade->render('pages.'.$this->path, $data);
             }
             else{
+
                 http_response_code(404);
                 echo $this->blade->render('pages.notfound');
+
+            }
+        }
+        else if($this->method == 'POST')
+        {
+            switch($this->path)
+            {
+                case 'contact': 
+                {
+
+                    break;
+                }
+                default: {
+
+                    http_response_code(405);
+                    break;
+                }
             }
         }
 
