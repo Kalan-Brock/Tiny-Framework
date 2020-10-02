@@ -4,7 +4,6 @@
 
 @section('content')
 
-
   <!-- Header -->
   <header class="bg-primary py-5 mb-5">
     <div class="container h-100">

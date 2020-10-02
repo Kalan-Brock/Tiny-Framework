@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('page_title')</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/additional.css" rel="stylesheet">
 
@@ -19,8 +20,8 @@
 
     @yield('content')
 
-    @include('components.footer'
-    )
+    @include('components.footer')
+
     <script src="/js/jquery-3.5.1.min.js"></script>
     <script src="/js/jquery-migrate-3.3.0.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
